@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cocktails</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
+	    <style>
+	    h2 {
+            font-family:"Segoe UI",Arial,sans-serif;
+            font-size: 2em;
+            text-align: center;
+            color: white;
+            text-shadow: 2px 2px 10px #000, 2px 2px 15px #000;
+	    }
+	    body {
+	        background: url("bg.png");
+	        margin: 0px;
+	    }
+	    .cocktails {
+	        text-align:center;
+	    }
+	    .cocktail {
+	        background-color: rgba(0, 0, 0, 0.333);
+	        text-align: center;
+	        display:inline-block;
+	        margin: 5px;
+	        padding: 3px;
+	        width: 420px;
+	        max-width: 95%;
+	        color: #eee; 
+            text-shadow: 1px 1px 10px #333;
+	        text-align: center;
+            vertical-align: middle;
+            font-family:"Segoe UI",Arial,sans-serif
+	    }
+	    .icon {
+	        float: left;
+	        height: 100%;
+            white-space: nowrap; /* this is required unless you put the helper span closely near the img */
+            text-align: center; margin: 1em 0;
+	    }
+	    .helper {
+	        display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+	    }
+	    .cocktail img{
+	        max-height: 100px;
+	        max-width: 75%;
+	        display: block;
+	        margin: auto;
+	        padding: 3px;
+	    }
+	    ul {
+	        display:table;
+	        margin:0 auto;
+	        text-align: left;
+            font-family:"Segoe UI",Arial,sans-serif
+	    }
+	    .cocktail b {
+	        font-size: 20px;
+	    }
+	    .inprog, .inprog:hover {
+	        background-color: rgba(15, 188, 38, .75) !important;
+	    }
+	    .otherinprog, .otherinprog:hover, .cocktail:hover {
+	        background-color: rgba(168, 168, 168, .75);
+	    }
+	    .otherinprog img {
+            filter: gray;
+            -webkit-filter: grayscale(1);
+            filter: grayscale(1);
+        }
+	    .wait, .wait:hover {
+	        background-color: #d66068 !important;
+	    }
+	    </style>
+		<script src="jquery-3.2.1.min.js"></script>
+    	<script>
+    	    var reqInProg = false;
+    	    var cocktailInProg = false;
+    	    var prevResult = {};
+    	    function getCocktails() {
+        		setTimeout(getCocktails, 500);
+    	        if(reqInProg) return;
+    	        var result = {
+    "DAIQUIRI ORANGE": {
+        "tekst": "<ul><li>limoensap</li><li>suikerwater</li><li>rum</li><li>appelsiensap</li></ul>",
+        "img": "daiquiri-orange.png",
+        "ingredients": {
+            "limoensap": 2,
+            "suikerwater": 2,
+            "rum": 6,
+            "appelsiensap": 1
+        }
+    },
+    
+    "TOM COLLINS": {
+        "tekst": "<ul><li>bruiswater</li><li>gin</li><li>suikerwater</li><li>citroensap</li></ul>",
+        "img": "tom-collins.png",
+        "ingredients": {
+            "bruiswater": 4,
+            "gin": 2,
+            "suikerwater": 1,
+            "citroensap": 1
+        }
+    },
+    
+    "MOJITO": {
+        "tekst": "<ul><li>bruiswater</li><li>limoensap</li><li>suikerwater</li><li>rum</li><li>(munt)</li></ul>",
+        "img": "Cedarseed-Cocktails-Mojito.ico",
+        "ingredients": {
+            "bruiswater": 1,
+            "limoensap": 1,
+            "suikerwater": 2,
+            "rum": 5
+        }
+    },
+    
+    "TEQUILA SUNRISE": {
+        "tekst": "<ul><li>limoensap</li><li>tequila</li><li>appelsiensap</li><li>(grenadine)</li></ul>",
+        "img": "Cedarseed-Cocktails-Tequila-Sunrise.ico",
+        "ingredients": {
+            "limoensap": 1,
+            "teqquila": 3,
+            "appelsiensap": 5
+        }
+    },
+    
+    "WHITE LADY": {
+        "tekst": "<ul><li>gin</li><li>triple sec</li><li>citroensap</li></ul>",
+        "img": "white-lady.png",
+        "ingredients": {
+            "gin": 4,
+            "triplesec": 2,
+            "citroensap": 2
+        }
+    },
+    
+    "LONG ISLAND ICE TEA": {
+        "tekst": "<ul><li>gin</li><li>triple sec</li><li>suikerwater</li><li>rum</li><li>tequila</li><li>citroensap</li><li>wodka</li></ul>",
+        "img": "Cedarseed-Cocktails-Long-Island-Iced-Tea.ico",
+        "ingredients": {
+            "gin": 1,
+            "triplesec": 1,
+            "suikerwater": 1,
+            "rum": 2,
+            "tequila": 1,
+            "citroensap": 1,
+            "wodka": 1
+        }
+    },
+    
+    "GIN FIZZ": {
+        "tekst": "<ul><li>bruiswater</li><li>gin</li><li>suikerwater</li><li>citroensap</li></ul>",
+        "img": "gin-fizz.png",
+        "ingredients": {
+            "bruiswater": 2,
+            "gin": 3,
+            "suikerwater": 1,
+            "citroensap": 2
+        }
+    },
+    /*
+    "TOMMY'S MARGARITA": {
+        "tekst": "<ul><li>limoensap</li><li>triple sec</li><li>suikerwater</li><li>tequila</li><li>(zout)</li></ul>",
+        "img": "tommys-margarita.jpg",
+        "ingredients": {
+            "limoensap": 2,
+            "triplesec": 2,
+            "suikerwater": 2,
+            "tequila": 3
+        }
+    }*/
+};
+
+        		//$.getJSON("cocktails.json", function(result) {
+        		    //console.log("cocktails", result);
+        		    if(JSON.stringify(result) === JSON.stringify(prevResult)) return;
+        		    $(".cocktails").empty();
+        		    $.each(result, function(key, value) {
+        		        if(value.currentStatus === "inprog") 
+        		            cockInProg = true;
+        		        
+        		        var button = $("#factory .cocktail").clone();
+        		        button.html(`<div class="icon"><span class='helper'></span><img/></div><b>${key}</b></br><div>${value.tekst}</div>`);
+        		        $("img", button).attr("src", value.img);
+        		        button.attr("id", key);
+        		        button.addClass(value.currentStatus);
+        		        button.click(function(clicked) {
+        		            if(cocktailInProg) return;
+        		            reqInProg = true;
+        		            cocktailInProg = true;
+        		            button.addClass("wait");
+        		            console.log(clicked.currentTarget.id);
+        		            //$.post("request", {"cocktail": clicked.currentTarget.id}, function(success) {
+        		                $(".cocktails .cocktail").addClass("otherinprog");
+        		                button.addClass("inprog").removeClass("wait").removeClass("otherinprog");
+        		                reqInProg = false;
+        		           // });
+        		        })
+        		        $(".cocktails").append(button);
+        		    });
+        		    prevResult = result;
+        		//});
+    	    }
+    	</script>
+    	
+    </head>
+	
+    <body onload="getCocktails()">
+        
+		<h2>KIES JE COCKTAIL</h2>
+		<div class="cocktails"></div>
+
+	    <div id="factory" style="display:none">
+			<div class="cocktail"><br /><br /></div>
+		</div>>
+    </body>
+</html>

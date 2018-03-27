@@ -1,0 +1,74 @@
+{
+    "DAIQUIRI ORANGE": {
+        "tekst": "limoensap, suikerwater, rum, appelsiensap",
+        "img": "tropical-daiquiri.jpg",
+        "ingredients": {
+            "limoensap": 2,
+            "suikerwater": 2,
+            "rum": 1
+        }
+    },
+    
+    "TOM COLLINS": {
+        "tekst": "bruiswater, gin, suikerwater, citroensap",
+        "img": "tom-collins.jpg",
+        "ingredients": {
+            "limoensap": 2,
+            "rum": 1
+        }
+    },
+    
+    "MOJITO": {
+        "tekst": "bruiswater, limoensap, suikerwater, rum, (munt)",
+        "img": "mojito.jpg",
+        "ingredients": {
+            "limoensap": 2,
+            "rum": 1
+        }
+    },
+    
+    "TEQUILA SUNRISE": {
+        "tekst": "limoensap, tequila, appelsiensap, (grenadine)",
+        "img": "tequila-sunrise.jpg",
+        "ingredients": {
+            "limoensap": 2,
+            "rum": 1
+        }
+    },
+    
+    "WHITE LADY": {
+        "tekst": "gin, triple sec, citroensap",
+        "img": "white-lady.png",
+        "ingredients": {
+            "limoensap": 2,
+            "rum": 1
+        }
+    },
+    
+    "LONG ISLAND ICE TEA": {
+        "tekst": "gin, triple sec, suikerwater, rum, tequila, citroensap, wodka",
+        "img": "long-island-iced-tea.jpg",
+        "ingredients": {
+            "limoensap": 2,
+            "rum": 1
+        }
+    },
+    
+    "GIN FIZZ": {
+        "tekst": "bruiswater, gin, suikerwater, citroensap",
+        "img": "gin-fizz.png",
+        "ingredients": {
+            "limoensap": 2,
+            "rum": 1
+        }
+    },
+    
+    "TOMMY'S MARGARITA": {
+        "tekst": "limoensap, triple sec, suikerwater, tequila, (zout)",
+        "img": "tommys-margarita.jpg",
+        "ingredients": {
+            "limoensap": 2,
+            "rum": 1
+        }
+    }
+}
